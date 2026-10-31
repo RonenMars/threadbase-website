@@ -32,10 +32,10 @@ describe("Hero", () => {
     );
   });
 
-  it("renders the approval-card screenshot", () => {
+  it("renders the hero video", () => {
     renderWithIntl(<Hero />);
-    const image = screen.getByAltText(
-      /threadbase approval card on iphone, next to a terminal session/i,
+    const image = screen.getByLabelText(
+      /threadbase demo: a coding agent asks a question/i,
     );
     expect(image).toBeInTheDocument();
   });
