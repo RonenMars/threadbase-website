@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Badge } from "@/components/ui/badge";
@@ -28,6 +28,7 @@ function detectPlatform(): "ios" | "android" | "desktop" {
 export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
   const tHero = useTranslations("home.hero");
   const hero = heroProp ?? getHeroContent(tHero);
+  const reducedMotion = useReducedMotion();
   const [platform, setPlatform] = useState<"ios" | "android" | "desktop">(
     "desktop",
   );
@@ -123,7 +124,7 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
               }}
             >
               {hero.subheadline ? (
-                <p className="mx-auto mt-2.5 max-w-3xl lg:mx-0 text-base leading-7 text-secondary sm:text-xl sm:leading-8">
+                <p className="mx-auto max-w-3xl lg:mx-0 text-base leading-7 text-secondary sm:text-xl sm:leading-8">
                   {hero.subheadline}
                 </p>
               ) : null}
@@ -193,17 +194,29 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
               },
             }}
           >
+            {/* Reduced motion: no autoplay, the poster stays. */}
             <video
-              aria-label={hero.imageAlt}
-              autoPlay
-              className="mx-auto mt-4 h-auto w-full max-w-md rounded-2xl border border-border-strong shadow-2xl"
+              aria-describedby="hero-video-description"
+              aria-label={hero.videoLabel}
+              autoPlay={!reducedMotion}
+              className="mx-auto h-auto w-full max-w-md rounded-2xl border border-border-strong shadow-2xl"
+              height={1080}
               loop
               muted
               playsInline
               poster="/videos/threadbase-hero-poster.jpg"
-              preload="metadata"
-              src="/videos/threadbase-hero.mp4"
-            />
+              width={1080}
+            >
+              <source
+                media="(max-width: 640px)"
+                src="/videos/threadbase-hero-540.mp4"
+                type="video/mp4"
+              />
+              <source src="/videos/threadbase-hero.mp4" type="video/mp4" />
+            </video>
+            <p className="sr-only" id="hero-video-description">
+              {hero.videoDescription}
+            </p>
           </motion.div>
         </div>
       </div>

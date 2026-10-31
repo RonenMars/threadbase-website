@@ -20,7 +20,8 @@ export interface HeroContent {
   badges: HeroBadge[];
   ctas: HeroCta[];
   primaryButtonLabel: string;
-  imageAlt: string;
+  videoLabel: string;
+  videoDescription: string;
 }
 
 export interface HowItWorksStep {
