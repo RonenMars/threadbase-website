@@ -32,10 +32,10 @@ describe("Hero", () => {
     );
   });
 
-  it("renders the pairing video", () => {
+  it("renders the hero video", () => {
     renderWithIntl(<Hero />);
     const image = screen.getByLabelText(
-      /threadbase pairing demo: run tb pair, scan the qr code, and the thread is live/i,
+      /threadbase demo: a coding agent asks a question/i,
     );
     expect(image).toBeInTheDocument();
   });

@@ -200,9 +200,9 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
               loop
               muted
               playsInline
-              poster="/videos/threadbase-pairing-poster.jpg"
+              poster="/videos/threadbase-hero-poster.jpg"
               preload="metadata"
-              src="/videos/threadbase-pairing.mp4"
+              src="/videos/threadbase-hero.mp4"
             />
           </motion.div>
         </div>
