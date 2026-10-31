@@ -81,7 +81,7 @@
       "headline": "תעזבו את השולחן. תשאירו את הסוכן עובד.",
       "subheadline": "Threadbase משדר סשנים של Claude Code, Codex, ו-GitHub Copilot מהמכונות שלכם לטלפון. אשרו, השיבו, הוסיפו את ההנחיה הבאה לתור, או התחילו סשן חדש מכל מקום. מוצפן מקצה לקצה כברירת מחדל בין הטלפון למכונות שלכם. Threadbase לא יכול לקרוא את הסשנים שלכם.",
       "primaryButtonLabel": "קבלו את האפליקציה",
-      "imageAlt": "כרטיס אישור של Threadbase באייפון, לצד סשן טרמינל",
+      "imageAlt": "הדגמת צימוד של Threadbase: מריצים tb pair, סורקים את קוד ה-QR, והשרשור פעיל",
       "badges": [
         { "label": "iOS · בטא TestFlight" },
         { "label": "Android · בדיקות סגורות" },

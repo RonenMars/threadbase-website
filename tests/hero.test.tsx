@@ -32,10 +32,10 @@ describe("Hero", () => {
     );
   });
 
-  it("renders the approval-card screenshot", () => {
+  it("renders the pairing video", () => {
     renderWithIntl(<Hero />);
-    const image = screen.getByAltText(
-      /threadbase approval card on iphone, next to a terminal session/i,
+    const image = screen.getByLabelText(
+      /threadbase pairing demo: run tb pair, scan the qr code, and the thread is live/i,
     );
     expect(image).toBeInTheDocument();
   });

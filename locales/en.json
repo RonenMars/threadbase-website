@@ -81,7 +81,7 @@
       "headline": "Leave the desk. Keep the agent working.",
       "subheadline": "Threadbase streams Claude Code, Codex, and GitHub Copilot sessions from your own machines to your phone. Approve, answer, queue the next prompt, or start a fresh session from anywhere. End-to-end encrypted by default between your phone and your machines. Threadbase can't read your sessions.",
       "primaryButtonLabel": "Get the app",
-      "imageAlt": "Threadbase approval card on iPhone, next to a terminal session",
+      "imageAlt": "Threadbase pairing demo: run tb pair, scan the QR code, and the thread is live",
       "badges": [
         { "label": "iOS · TestFlight beta" },
         { "label": "Android · closed testing" },
