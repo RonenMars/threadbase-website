@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +28,7 @@ function detectPlatform(): "ios" | "android" | "desktop" {
 export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
   const tHero = useTranslations("home.hero");
   const hero = heroProp ?? getHeroContent(tHero);
+  const reducedMotion = useReducedMotion();
   const [platform, setPlatform] = useState<"ios" | "android" | "desktop">(
     "desktop",
   );
@@ -95,9 +95,8 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
             {hero.eyebrow}
           </Badge>
         </motion.div>
-
         <motion.div
-          className="max-w-5xl space-y-4 sm:space-y-6"
+          className="max-w-5xl"
           variants={{
             hidden: { opacity: 0, y: 24 },
             visible: {
@@ -111,86 +110,115 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
             text={hero.headline}
             className="glitch-title text-balance text-4xl font-semibold tracking-[-0.04em] text-primary sm:text-6xl lg:text-7xl"
           />
-          {hero.subheadline ? (
-            <p className="mx-auto mt-2.5 max-w-3xl text-base leading-7 text-secondary sm:text-xl sm:leading-8">
-              {hero.subheadline}
-            </p>
-          ) : null}
         </motion.div>
+        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14 lg:text-start">
+          <div className="flex flex-col items-center gap-7 sm:gap-10 lg:items-start">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+            >
+              {hero.subheadline ? (
+                <p className="mx-auto max-w-3xl lg:mx-0 text-base leading-7 text-secondary sm:text-xl sm:leading-8">
+                  {hero.subheadline}
+                </p>
+              ) : null}
+            </motion.div>
+            <motion.ul
+              className="flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+            >
+              {hero.badges.map((badge) => (
+                <li key={badge.label}>
+                  <Badge variant="neutral">{badge.label}</Badge>
+                </li>
+              ))}
+            </motion.ul>
 
-        <motion.ul
-          className="flex flex-wrap items-center justify-center gap-3"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-            },
-          }}
-        >
-          {hero.badges.map((badge) => (
-            <li key={badge.label}>
-              <Badge variant="neutral">{badge.label}</Badge>
-            </li>
-          ))}
-        </motion.ul>
-
-        <motion.div
-          className="flex flex-col items-center justify-center gap-3 sm:flex-row"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-            },
-          }}
-        >
-          <Button
-            render={<Link href={primaryCtaHref} />}
-            nativeButton={false}
-            className="min-w-50"
-            size="lg"
-            variant="primary"
-          >
-            {hero.primaryButtonLabel}
-          </Button>
-          {hero.ctas.map((cta) =>
-            cta.variant === "outline" ? (
+            <motion.div
+              className="flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+            >
               <Button
-                key={cta.label}
-                render={<Link href={cta.href} />}
+                render={<Link href={primaryCtaHref} />}
                 nativeButton={false}
                 className="min-w-50"
                 size="lg"
-                variant="outline"
+                variant="primary"
               >
-                {cta.label}
+                {hero.primaryButtonLabel}
               </Button>
-            ) : null,
-          )}
-        </motion.div>
+              {hero.ctas.map((cta) =>
+                cta.variant === "outline" ? (
+                  <Button
+                    key={cta.label}
+                    render={<Link href={cta.href} />}
+                    nativeButton={false}
+                    className="min-w-50"
+                    size="lg"
+                    variant="outline"
+                  >
+                    {cta.label}
+                  </Button>
+                ) : null,
+              )}
+            </motion.div>
+          </div>
 
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 24 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-            },
-          }}
-        >
-          <Image
-            alt={hero.imageAlt}
-            className="mx-auto mt-4 h-auto w-full max-w-70 rounded-2xl border border-border-strong shadow-2xl"
-            height={2532}
-            priority
-            src="/screenshots/hero-approval-card.png"
-            width={1170}
-          />
-        </motion.div>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+          >
+            {/* Reduced motion: no autoplay, the poster stays. */}
+            <video
+              aria-describedby="hero-video-description"
+              aria-label={hero.videoLabel}
+              autoPlay={!reducedMotion}
+              className="mx-auto h-auto w-full max-w-md rounded-2xl border border-border-strong shadow-2xl"
+              height={1080}
+              loop
+              muted
+              playsInline
+              poster="/videos/threadbase-hero-poster.jpg"
+              width={1080}
+            >
+              <source
+                media="(max-width: 640px)"
+                src="/videos/threadbase-hero-540.mp4"
+                type="video/mp4"
+              />
+              <source src="/videos/threadbase-hero.mp4" type="video/mp4" />
+            </video>
+            <p className="sr-only" id="hero-video-description">
+              {hero.videoDescription}
+            </p>
+          </motion.div>
+        </div>
       </div>
     </motion.section>
   );

@@ -73,10 +73,35 @@ async function settleScrollAnimations(
   await page.waitForTimeout(800);
 }
 
+/**
+ * The hero <video> autoplays and loops; a screenshot would capture whichever
+ * frame playback is on. Pause it and rewind to frame 0 so every run diffs the
+ * same frame.
+ */
+async function freezeHeroVideo(
+  page: import("@playwright/test").Page,
+): Promise<void> {
+  await page.waitForFunction(() => {
+    const video = document.querySelector("video");
+    return video !== null && video.readyState >= 2;
+  });
+  await page.evaluate(
+    () =>
+      new Promise<void>((resolve) => {
+        const video = document.querySelector("video") as HTMLVideoElement;
+        video.pause();
+        if (video.currentTime === 0) return resolve();
+        video.addEventListener("seeked", () => resolve(), { once: true });
+        video.currentTime = 0;
+      }),
+  );
+}
+
 test("home page above the fold", async ({ page }) => {
   await page.goto("/");
   // Wait for fonts so Geist's metrics are stable before the screenshot.
   await page.evaluate(() => document.fonts.ready);
+  await freezeHeroVideo(page);
   await expect(page).toHaveScreenshot("home-above-fold.png", {
     fullPage: false,
     clip: { x: 0, y: 0, width: 1440, height: 900 },
@@ -87,6 +112,7 @@ test("home page above the fold", async ({ page }) => {
 test("home page full scroll", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
+  await freezeHeroVideo(page);
   await settleScrollAnimations(page);
   await expect(page).toHaveScreenshot("home-full.png", {
     fullPage: true,
