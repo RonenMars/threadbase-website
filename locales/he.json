@@ -78,8 +78,8 @@
   "home": {
     "hero": {
       "eyebrow": "Claude Code, Codex, ו-GitHub Copilot, גם הרחק משולחן העבודה",
-      "headline": "תעזבו את השולחן. תשאירו את הסוכן עובד.",
-      "subheadline": "Threadbase משדר סשנים של Claude Code, Codex, ו-GitHub Copilot מהמכונות שלכם לטלפון. אשרו, השיבו, הוסיפו את ההנחיה הבאה לתור, או התחילו סשן חדש מכל מקום. מוצפן מקצה לקצה כברירת מחדל בין הטלפון למכונות שלכם. Threadbase לא יכול לקרוא את הסשנים שלכם.",
+      "headline": "מצאו את מה שהסוכנים שלכם כבר פתרו.",
+      "subheadline": "היסטוריה אחת שאפשר לחפש בה, של כל סשן של סוכן קוד במכונות שלכם. אשרו והשיבו מהטלפון.",
       "primaryButtonLabel": "קבלו את האפליקציה",
       "videoLabel": "הדגמת Threadbase",
       "scrollCueLabel": "גללו אל היכולות",
