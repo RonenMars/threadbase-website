@@ -35,6 +35,7 @@ export function FeaturesGrid({
     <motion.section
       animate="visible"
       className="px-6 py-16 sm:px-8 lg:px-10"
+      id="features"
       initial={false}
       variants={fadeUp}
     >

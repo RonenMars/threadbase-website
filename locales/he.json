@@ -82,6 +82,7 @@
       "subheadline": "Threadbase משדר סשנים של Claude Code, Codex, ו-GitHub Copilot מהמכונות שלכם לטלפון. אשרו, השיבו, הוסיפו את ההנחיה הבאה לתור, או התחילו סשן חדש מכל מקום. מוצפן מקצה לקצה כברירת מחדל בין הטלפון למכונות שלכם. Threadbase לא יכול לקרוא את הסשנים שלכם.",
       "primaryButtonLabel": "קבלו את האפליקציה",
       "videoLabel": "הדגמת Threadbase",
+      "scrollCueLabel": "גללו אל היכולות",
       "videoDescription": "הדגמת Threadbase: סוכן הקוד שואל שאלה, הטלפון מקבל התראה, מאשרים, שולחים את הפרומפט הבא ופותחים סשן חדש במכונה אחרת",
       "badges": [
         { "label": "iOS · בטא TestFlight" },

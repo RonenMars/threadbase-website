@@ -82,6 +82,7 @@
       "subheadline": "Threadbase streams Claude Code, Codex, and GitHub Copilot sessions from your own machines to your phone. Approve, answer, queue the next prompt, or start a fresh session from anywhere. End-to-end encrypted by default between your phone and your machines. Threadbase can't read your sessions.",
       "primaryButtonLabel": "Get the app",
       "videoLabel": "Threadbase demo",
+      "scrollCueLabel": "Scroll to the features",
       "videoDescription": "Threadbase demo: a coding agent asks a question, the phone gets the notification, you approve it, send the next prompt, and start a new session on another machine",
       "badges": [
         { "label": "iOS · TestFlight beta" },
