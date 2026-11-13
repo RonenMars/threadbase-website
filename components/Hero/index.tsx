@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { Badge } from "@/components/ui/badge";
@@ -111,80 +112,9 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
             className="glitch-title text-balance text-4xl font-semibold tracking-[-0.04em] text-primary sm:text-6xl lg:text-7xl"
           />
         </motion.div>
-        <div className="grid w-full items-center gap-10 lg:grid-cols-2 lg:gap-14 lg:text-start">
-          <div className="flex flex-col items-center gap-7 sm:gap-10 lg:items-start">
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 24 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-            >
-              {hero.subheadline ? (
-                <p className="mx-auto max-w-3xl lg:mx-0 text-base leading-7 text-secondary sm:text-xl sm:leading-8">
-                  {hero.subheadline}
-                </p>
-              ) : null}
-            </motion.div>
-            <motion.ul
-              className="flex flex-wrap items-center justify-center gap-3 lg:justify-start"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-            >
-              {hero.badges.map((badge) => (
-                <li key={badge.label}>
-                  <Badge variant="neutral">{badge.label}</Badge>
-                </li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              className="flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-            >
-              <Button
-                render={<Link href={primaryCtaHref} />}
-                nativeButton={false}
-                className="min-w-50"
-                size="lg"
-                variant="primary"
-              >
-                {hero.primaryButtonLabel}
-              </Button>
-              {hero.ctas.map((cta) =>
-                cta.variant === "outline" ? (
-                  <Button
-                    key={cta.label}
-                    render={<Link href={cta.href} />}
-                    nativeButton={false}
-                    className="min-w-50"
-                    size="lg"
-                    variant="outline"
-                  >
-                    {cta.label}
-                  </Button>
-                ) : null,
-              )}
-            </motion.div>
-          </div>
-
-          <motion.div
+        {hero.subheadline ? (
+          <motion.p
+            className="mx-auto max-w-3xl text-base leading-7 text-secondary sm:text-xl sm:leading-8"
             variants={{
               hidden: { opacity: 0, y: 24 },
               visible: {
@@ -194,32 +124,104 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
               },
             }}
           >
-            {/* Reduced motion: no autoplay, the poster stays. */}
-            <video
-              aria-describedby="hero-video-description"
-              aria-label={hero.videoLabel}
-              autoPlay={!reducedMotion}
-              className="mx-auto h-auto w-full max-w-md rounded-2xl border border-border-strong shadow-2xl"
-              height={1080}
-              loop
-              muted
-              playsInline
-              poster="/videos/threadbase-hero-poster.jpg"
-              width={1080}
-            >
-              <source
-                media="(max-width: 640px)"
-                src="/videos/threadbase-hero-540.mp4"
-                type="video/mp4"
-              />
-              <source src="/videos/threadbase-hero.mp4" type="video/mp4" />
-            </video>
-            <p className="sr-only" id="hero-video-description">
-              {hero.videoDescription}
-            </p>
-          </motion.div>
-        </div>
+            {hero.subheadline}
+          </motion.p>
+        ) : null}
+
+        <motion.div
+          className="flex w-full flex-col items-center gap-6"
+          variants={{
+            hidden: { opacity: 0, y: 24 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          {/* Reduced motion: no autoplay, the poster stays. */}
+          <video
+            aria-describedby="hero-video-description"
+            aria-label={hero.videoLabel}
+            autoPlay={!reducedMotion}
+            className="hero-video mx-auto aspect-square h-auto w-[min(100%,48rem,62svh)] rounded-2xl border border-border-strong shadow-2xl"
+            height={1080}
+            loop
+            muted
+            playsInline
+            poster="/videos/threadbase-hero-poster.jpg"
+            width={1080}
+          >
+            <source
+              media="(max-width: 640px)"
+              src="/videos/threadbase-hero-540.mp4"
+              type="video/mp4"
+            />
+            <source src="/videos/threadbase-hero.mp4" type="video/mp4" />
+          </video>
+          <p className="sr-only" id="hero-video-description">
+            {hero.videoDescription}
+          </p>
+        </motion.div>
+
+        <motion.ul
+          className="hero-rise flex flex-wrap items-center justify-center gap-3"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          {hero.badges.map((badge) => (
+            <li key={badge.label}>
+              <Badge variant="neutral">{badge.label}</Badge>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.div
+          className="hero-rise flex flex-col items-center justify-center gap-3 sm:flex-row"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
+        >
+          <Button
+            render={<Link href={primaryCtaHref} />}
+            nativeButton={false}
+            className="min-w-50"
+            size="lg"
+            variant="primary"
+          >
+            {hero.primaryButtonLabel}
+          </Button>
+          {hero.ctas.map((cta) =>
+            cta.variant === "outline" ? (
+              <Button
+                key={cta.label}
+                render={<Link href={cta.href} />}
+                nativeButton={false}
+                className="min-w-50"
+                size="lg"
+                variant="outline"
+              >
+                {cta.label}
+              </Button>
+            ) : null,
+          )}
+        </motion.div>
       </div>
+      <ChevronDown
+        aria-hidden="true"
+        className="hero-scroll-cue pointer-events-none fixed bottom-6 left-1/2 z-10 -ml-3 size-6 text-muted"
+      />
     </motion.section>
   );
 }

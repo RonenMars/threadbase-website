@@ -219,3 +219,72 @@ a {
   --color-fd-primary: var(--accent);
   --color-fd-ring: var(--accent);
 }
+
+/* Hero scroll effect: native scroll-driven animations, static where unsupported. */
+.hero-scroll-cue {
+  animation: hero-cue-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes hero-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes hero-video-recede {
+  to {
+    opacity: 0.55;
+    transform: scale(0.94) translateY(-1.5rem);
+  }
+}
+
+@keyframes hero-cue-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0.2;
+    transform: translateY(2rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* The video recedes as it scrolls out; the content below rises in. */
+    .hero-video {
+      animation: hero-video-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+    }
+
+    .hero-rise {
+      animation: hero-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    /* Bounce keeps running; fade is a second, scroll-driven animation. */
+    .hero-scroll-cue {
+      animation:
+        hero-cue-bounce 2.4s ease-in-out infinite,
+        hero-cue-fade linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range:
+        normal,
+        0 8rem;
+    }
+  }
+}
