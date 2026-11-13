@@ -4,10 +4,10 @@ import Home from "@/app/[locale]/page";
 import { renderWithIntl } from "@/tests/test-utils";
 
 describe("Home page", () => {
-  it("renders the continuity-first hero headline", () => {
+  it("renders the search-first hero headline", () => {
     renderWithIntl(<Home />);
     expect(document.body.textContent).toContain(
-      "Leave the desk. Keep the agent working.",
+      "Find what your agents already solved.",
     );
   });
 

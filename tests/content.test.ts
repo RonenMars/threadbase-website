@@ -39,7 +39,7 @@ describe("i18n content catalogs", () => {
 
   it("keeps the English hero headline in locales/en.json", () => {
     expect(enTranslations.home.hero.headline).toBe(
-      "Leave the desk. Keep the agent working.",
+      "Find what your agents already solved.",
     );
   });
 

@@ -78,8 +78,8 @@
   "home": {
     "hero": {
       "eyebrow": "Claude Code, Codex, and GitHub Copilot, away from your desk",
-      "headline": "Leave the desk. Keep the agent working.",
-      "subheadline": "Threadbase streams Claude Code, Codex, and GitHub Copilot sessions from your own machines to your phone. Approve, answer, queue the next prompt, or start a fresh session from anywhere. End-to-end encrypted by default between your phone and your machines. Threadbase can't read your sessions.",
+      "headline": "Find what your agents already solved.",
+      "subheadline": "One searchable history of every coding-agent session on your machines. Approve and answer from your phone.",
       "primaryButtonLabel": "Get the app",
       "videoLabel": "Threadbase demo",
       "scrollCueLabel": "Scroll to the features",
