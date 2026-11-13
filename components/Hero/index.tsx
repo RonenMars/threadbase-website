@@ -157,7 +157,7 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
             aria-describedby="hero-video-description"
             aria-label={hero.videoLabel}
             autoPlay={!reducedMotion}
-            className="hero-video mx-auto aspect-square h-auto w-[min(100%,48rem,62svh)] rounded-2xl border border-border-strong shadow-2xl"
+            className="hero-video mx-auto aspect-square h-auto w-[min(100%,48rem,85svh)] rounded-2xl border border-border-strong shadow-2xl"
             height={1080}
             loop
             muted
