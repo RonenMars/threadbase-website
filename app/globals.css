@@ -219,3 +219,108 @@ a {
   --color-fd-primary: var(--accent);
   --color-fd-ring: var(--accent);
 }
+
+/* Hero scroll effect: native scroll-driven animations, static where unsupported. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* The cue needs scroll-driven animation to fade out, so it is hidden without it. */
+.hero-scroll-cue {
+  display: none;
+  background: rgb(15 26 44 / 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid #243a59;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.45),
+    0 0 18px rgb(99 179 255 / 0.25);
+  color: #a3c9ff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.hero-scroll-cue:hover {
+  border-color: #63b3ff;
+}
+
+.hero-scroll-cue:focus-visible {
+  outline: 2px solid #63b3ff;
+  outline-offset: 3px;
+}
+
+@keyframes hero-cue-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      0 8px 24px rgb(0 0 0 / 0.45),
+      0 0 10px rgb(99 179 255 / 0.15);
+  }
+  50% {
+    transform: translateY(8px);
+    box-shadow:
+      0 8px 24px rgb(0 0 0 / 0.45),
+      0 0 18px rgb(99 179 255 / 0.35);
+  }
+}
+
+@keyframes hero-video-recede {
+  to {
+    opacity: 0.55;
+    transform: scale(0.94) translateY(-1.5rem);
+  }
+}
+
+/* visibility flips at the end, so the faded cue leaves the tab order and cannot be clicked. */
+@keyframes hero-cue-fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0.2;
+    transform: translateY(2rem);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .hero-scroll-cue {
+    display: flex;
+    animation: hero-cue-fade linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 8rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* The video recedes as it scrolls out; the content below rises in. */
+    .hero-video {
+      animation: hero-video-recede linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+    }
+
+    .hero-rise {
+      animation: hero-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    /* Bounce keeps running; fade is a second, scroll-driven animation. */
+    .hero-scroll-cue {
+      animation:
+        hero-cue-bounce 1.8s ease-in-out infinite,
+        hero-cue-fade linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range:
+        normal,
+        0 8rem;
+    }
+  }
+}

@@ -18,17 +18,12 @@ afterEach(() => {
 });
 
 describe("Hero", () => {
-  it("renders the leave-the-desk headline and supporting copy", () => {
+  it("renders the search-first headline and supporting copy", () => {
     renderWithIntl(<Hero />);
     const root = screen.getByRole("banner") ?? document.body;
+    expect(root.textContent).toContain("Find what your agents already solved.");
     expect(root.textContent).toContain(
-      "Leave the desk. Keep the agent working.",
-    );
-    expect(root.textContent).toContain(
-      "Threadbase streams Claude Code, Codex, and GitHub Copilot sessions from your own machines to your phone.",
-    );
-    expect(root.textContent).toContain(
-      "End-to-end encrypted by default between your phone and your machines. Threadbase can't read your sessions.",
+      "One searchable history of every coding-agent session on your machines. Approve and answer from your phone.",
     );
   });
 
@@ -36,7 +31,7 @@ describe("Hero", () => {
     renderWithIntl(<Hero />);
     const video = screen.getByLabelText("Threadbase demo");
     expect(video).toHaveAccessibleDescription(
-      /a coding agent asks a question/i,
+      /search by the words you remember/i,
     );
   });
 

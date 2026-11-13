@@ -26,7 +26,7 @@ All in `locales/*.json` unless noted, with he/ar/ru counterparts that must chang
 
 | Key | What it says now |
 |---|---|
-| `home.hero.subheadline` | Ends with "End-to-end encrypted by default between your phone and your machines. Threadbase can't read your sessions." |
+| `home.hero.subheadline` | Makes no privacy or relay claim since the 2026-11-02 search-first rewrite (it used to end with "Threadbase can't read your sessions."). Keep it that way, or add the claim to this table. |
 | `home.security.heading` | Leads with "Threadbase can't read your sessions." |
 | `home.security.description` | By default the phone talks straight to the streamer; no Threadbase server in between. |
 | `home.security.cantSee[0]` | Never readable by Threadbase; touches a Threadbase server only if the optional relay is on, and then only as encrypted bytes. |
