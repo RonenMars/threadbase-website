@@ -222,16 +222,29 @@ a {
 
 /* Hero scroll effect: native scroll-driven animations, static where unsupported. */
 .hero-scroll-cue {
-  animation: hero-cue-bounce 2.4s ease-in-out infinite;
+  background: rgb(15 26 44 / 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid #243a59;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.45),
+    0 0 18px rgb(99 179 255 / 0.25);
+  color: #a3c9ff;
+  animation: hero-cue-bounce 1.8s ease-in-out infinite;
 }
 
 @keyframes hero-cue-bounce {
   0%,
   100% {
     transform: translateY(0);
+    box-shadow:
+      0 8px 24px rgb(0 0 0 / 0.45),
+      0 0 10px rgb(99 179 255 / 0.15);
   }
   50% {
-    transform: translateY(6px);
+    transform: translateY(8px);
+    box-shadow:
+      0 8px 24px rgb(0 0 0 / 0.45),
+      0 0 18px rgb(99 179 255 / 0.35);
   }
 }
 
@@ -279,7 +292,7 @@ a {
     /* Bounce keeps running; fade is a second, scroll-driven animation. */
     .hero-scroll-cue {
       animation:
-        hero-cue-bounce 2.4s ease-in-out infinite,
+        hero-cue-bounce 1.8s ease-in-out infinite,
         hero-cue-fade linear both;
       animation-timeline: auto, scroll(root);
       animation-range:

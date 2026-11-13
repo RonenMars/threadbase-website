@@ -218,10 +218,12 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
           )}
         </motion.div>
       </div>
-      <ChevronDown
+      <span
         aria-hidden="true"
-        className="hero-scroll-cue pointer-events-none fixed bottom-6 left-1/2 z-10 -ml-3 size-6 text-muted"
-      />
+        className="hero-scroll-cue pointer-events-none fixed bottom-7 left-1/2 z-10 -ml-[26px] flex size-[52px] items-center justify-center rounded-full"
+      >
+        <ChevronDown className="size-[22px]" strokeWidth={2} />
+      </span>
     </motion.section>
   );
 }
