@@ -221,7 +221,15 @@ a {
 }
 
 /* Hero scroll effect: native scroll-driven animations, static where unsupported. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* The cue needs scroll-driven animation to fade out, so it is hidden without it. */
 .hero-scroll-cue {
+  display: none;
   background: rgb(15 26 44 / 0.85);
   backdrop-filter: blur(8px);
   border: 1px solid #243a59;
@@ -229,7 +237,17 @@ a {
     0 8px 24px rgb(0 0 0 / 0.45),
     0 0 18px rgb(99 179 255 / 0.25);
   color: #a3c9ff;
-  animation: hero-cue-bounce 1.8s ease-in-out infinite;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.hero-scroll-cue:hover {
+  border-color: #63b3ff;
+}
+
+.hero-scroll-cue:focus-visible {
+  outline: 2px solid #63b3ff;
+  outline-offset: 3px;
 }
 
 @keyframes hero-cue-bounce {
@@ -255,9 +273,11 @@ a {
   }
 }
 
+/* visibility flips at the end, so the faded cue leaves the tab order and cannot be clicked. */
 @keyframes hero-cue-fade {
   to {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -268,9 +288,12 @@ a {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@supports (animation-timeline: scroll()) {
   .hero-scroll-cue {
-    animation: none;
+    display: flex;
+    animation: hero-cue-fade linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 8rem;
   }
 }
 

@@ -80,6 +80,19 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
         aria-hidden="true"
       />
 
+      {/* First in DOM so Tab reaches it before the CTAs scroll the page and fade it out. */}
+      <a
+        aria-label={tHero("scrollCueLabel")}
+        className="hero-scroll-cue fixed bottom-7 left-1/2 z-20 -ml-[26px] size-[52px] items-center justify-center rounded-full"
+        href="#features"
+      >
+        <ChevronDown
+          aria-hidden="true"
+          className="size-[22px]"
+          strokeWidth={2}
+        />
+      </a>
+
       <div className="container-shell relative z-10 flex flex-col items-center gap-7 text-center sm:gap-10">
         <motion.div
           className="flex flex-col items-center gap-4"
@@ -218,12 +231,6 @@ export function Hero({ hero: heroProp }: HeroProps): React.JSX.Element {
           )}
         </motion.div>
       </div>
-      <span
-        aria-hidden="true"
-        className="hero-scroll-cue pointer-events-none fixed bottom-7 left-1/2 z-10 -ml-[26px] flex size-[52px] items-center justify-center rounded-full"
-      >
-        <ChevronDown className="size-[22px]" strokeWidth={2} />
-      </span>
     </motion.section>
   );
 }
