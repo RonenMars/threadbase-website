@@ -31,7 +31,7 @@ describe("Hero", () => {
     renderWithIntl(<Hero />);
     const video = screen.getByLabelText("Threadbase demo");
     expect(video).toHaveAccessibleDescription(
-      /a coding agent asks a question/i,
+      /search by the words you remember/i,
     );
   });
 

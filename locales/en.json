@@ -83,7 +83,7 @@
       "primaryButtonLabel": "Get the app",
       "videoLabel": "Threadbase demo",
       "scrollCueLabel": "Scroll to the features",
-      "videoDescription": "Threadbase demo: a coding agent asks a question, the phone gets the notification, you approve it, send the next prompt, and start a new session on another machine",
+      "videoDescription": "Threadbase demo: search by the words you remember to find a past agent session, even months later and from any agent, without changing your terminal, with every machine and agent in one list",
       "badges": [
         { "label": "iOS · TestFlight beta" },
         { "label": "Android · closed testing" },

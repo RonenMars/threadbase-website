@@ -83,7 +83,7 @@
       "primaryButtonLabel": "קבלו את האפליקציה",
       "videoLabel": "הדגמת Threadbase",
       "scrollCueLabel": "גללו אל היכולות",
-      "videoDescription": "הדגמת Threadbase: סוכן הקוד שואל שאלה, הטלפון מקבל התראה, מאשרים, שולחים את הפרומפט הבא ופותחים סשן חדש במכונה אחרת",
+      "videoDescription": "הדגמת Threadbase: חיפוש לפי המילים שזוכרים מוצא סשן קודם של סוכן, גם אחרי חודשים ומכל סוכן, בלי לשנות את הטרמינל, וכל המכונות והסוכנים ברשימה אחת",
       "badges": [
         { "label": "iOS · בטא TestFlight" },
         { "label": "Android · בדיקות סגורות" },
