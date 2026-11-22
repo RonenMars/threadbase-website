@@ -35,12 +35,14 @@ export function BetasPage(): React.JSX.Element {
   );
 }
 
-function PlatformCard({
+export function PlatformCard({
   platform,
   index,
+  joinOnly = false,
 }: {
   platform: BetaPlatform;
   index: number;
+  joinOnly?: boolean;
 }): React.JSX.Element {
   const Icon = PLATFORM_ICONS[platform.id] ?? DeviceMobileCamera;
   const isExternal = platform.primaryCta.href.startsWith("http");
@@ -73,8 +75,8 @@ function PlatformCard({
       <div className="flex flex-col gap-3 sm:flex-row">
         <Link
           href={platform.primaryCta.href}
-          target={isExternal ? "_blank" : undefined}
-          rel={isExternal ? "noopener noreferrer" : undefined}
+          target={joinOnly || isExternal ? "_blank" : undefined}
+          rel={joinOnly || isExternal ? "noopener noreferrer" : undefined}
           className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_12px_32px_-12px_rgba(99,179,255,0.7)] motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
         >
           <span>{platform.primaryCta.label}</span>
@@ -84,7 +86,7 @@ function PlatformCard({
             className="opacity-70 transition-transform duration-200 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
           />
         </Link>
-        {platform.secondaryCta ? (
+        {!joinOnly && platform.secondaryCta ? (
           <Link
             href={platform.secondaryCta.href}
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-border bg-bg-primary px-6 py-3 text-sm font-semibold text-primary transition-[transform,border-color] duration-300 ease-out hover:border-accent motion-safe:hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"

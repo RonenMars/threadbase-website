@@ -27,6 +27,7 @@ All in `locales/*.json` unless noted, with he/ar/ru counterparts that must chang
 | Key | What it says now |
 |---|---|
 | `home.hero.subheadline` | Makes no privacy or relay claim since the 2026-11-02 search-first rewrite (it used to end with "Threadbase can't read your sessions."). Keep it that way, or add the claim to this table. |
+| `pages.lp.strengths[2].body`, `pages.lp.technicalDetails` | Connections to the user's machine are end-to-end encrypted and direct by default. Noise, device revocation and the optional encrypted relay are described in expandable details, which also say ordinary push notifications never carry prompts or output while optional iOS Live Activities carry a session title and a short output excerpt (matching `pages.privacy.pushBody`). |
 | `home.security.heading` | Leads with "Threadbase can't read your sessions." |
 | `home.security.description` | By default the phone talks straight to the streamer; no Threadbase server in between. |
 | `home.security.cantSee[0]` | Never readable by Threadbase; touches a Threadbase server only if the optional relay is on, and then only as encrypted bytes. |
