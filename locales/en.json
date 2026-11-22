@@ -27,7 +27,11 @@
       },
       "lp": {
         "title": "Threadbase — Your AI coding agents, in your pocket.",
-        "description": "Works with Claude Code, Codex, Cursor CLI and Copilot CLI."
+        "description": "Monitor and control your existing AI coding sessions from your phone."
+      },
+      "lpBeta": {
+        "title": "Threadbase — Beta Programs",
+        "description": "Join the Threadbase beta on iOS via TestFlight or Android via Google Play. Get early access to the mobile companion for Claude Code, Codex, and GitHub Copilot."
       }
     }
   },
@@ -671,23 +675,45 @@
       "homeLink": "Return home"
     },
     "lp": {
-      "eyebrow": "Threadbase · Mobile companion",
+      "eyebrow": "Mobile companion for coding agents",
       "headline": "Your AI coding agents, in your pocket.",
-      "subheadline": "Works with Claude Code, Codex, Cursor CLI and Copilot CLI.",
+      "subheadline": "Monitor and control your existing AI coding sessions from your phone.",
       "ctaLabel": "Join the beta",
       "betaHeading": "Pick your phone. Join the beta.",
       "strengths": [
         {
-          "title": "Works with the sessions you already run.",
-          "body": "The streamer discovers agents running in a normal terminal. Adopt sessions with a discoverable conversation ID, or resume a past conversation live. No wrapper required."
+          "title": "Your existing sessions. Anywhere.",
+          "body": "Pick up an eligible terminal session, or resume a past conversation from your phone."
         },
         {
-          "title": "Unblock your agent from anywhere.",
-          "body": "Get push alerts when an agent needs input, finishes or fails. Send prompts, slash commands, interrupts and Esc/Tab/arrows. Review a diff and send a note back."
+          "title": "Keep your agents moving.",
+          "body": "Get notified when an agent needs attention. Reply, review a diff, and keep work moving."
         },
         {
-          "title": "Your code stays on your machine.",
-          "body": "Phone-to-streamer traffic is end-to-end encrypted with Noise, direct to your own machine by default. Each device has a revocable token. Push payloads never carry prompts or output."
+          "title": "Your machine. Your control.",
+          "body": "Connect to your own machine with end-to-end encryption. Direct by default."
+        }
+      ],
+      "noWrapper": "No wrapper required. Keep your terminal.",
+      "providersLabel": "Supported coding agents",
+      "imageAlt": "Threadbase mobile app showing a live session waiting for input, a conversation and reply controls.",
+      "imageCaption": "Actual app capture · English demo session",
+      "strengthsHeading": "Built around your workflow",
+      "detailsLabel": "Connection and session details",
+      "technicalDetails": "Noise protects phone-to-streamer traffic. Each device has its own revocable token. Push notifications never contain prompts or output. Taking over a terminal session requires a discoverable conversation ID. An optional relay can carry the encrypted connection.",
+      "storyHeading": "Leave the desk. Keep the thread.",
+      "steps": [
+        {
+          "title": "Run your agent",
+          "body": "Start a supported coding agent in your usual terminal."
+        },
+        {
+          "title": "Leave your desk",
+          "body": "Follow progress and get notified when your agent needs you."
+        },
+        {
+          "title": "Continue from your phone",
+          "body": "Send the next prompt or review a change, wherever you are."
         }
       ]
     }

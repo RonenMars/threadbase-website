@@ -96,7 +96,7 @@ function useMobilePlatform(): "ios" | "android" | "desktop" {
 
 export function NavMenu(): React.JSX.Element | null {
   const pathname = usePathname();
-  if (/\/lp\/?$/.test(pathname)) return null;
+  if (/\/lp(?:\/|$)/.test(pathname)) return null;
   return <SiteNavMenu />;
 }
 
