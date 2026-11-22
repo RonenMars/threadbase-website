@@ -106,11 +106,11 @@ test("home page above the fold", async ({ page }) => {
   // Wait for fonts so Geist's metrics are stable before the screenshot.
   await page.evaluate(() => document.fonts.ready);
   await freezeHeroVideo(page);
+  await page.addStyleTag({ content: HIDE_DEV_OVERLAY });
   await expect(page).toHaveScreenshot("home-above-fold.png", {
     fullPage: false,
     clip: { x: 0, y: 0, width: 1440, height: 900 },
     mask: [page.locator(HERO_HEADLINE_MASK)],
-    style: HIDE_DEV_OVERLAY,
   });
 });
 
@@ -130,10 +130,8 @@ test("solutions stub page", async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
   // /solutions has no GlitchTitle; no mask needed. Also no scroll-triggered
   // sections (the page fits in a single viewport), so no settle call.
-  await expect(page).toHaveScreenshot("solutions.png", {
-    fullPage: true,
-    style: HIDE_DEV_OVERLAY,
-  });
+  await page.addStyleTag({ content: HIDE_DEV_OVERLAY });
+  await expect(page).toHaveScreenshot("solutions.png", { fullPage: true });
 });
 
 test("hero secondary CTA links to the quick-start anchor", async ({ page }) => {

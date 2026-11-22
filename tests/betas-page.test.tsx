@@ -2,9 +2,10 @@ import { screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { BetasPage, PlatformCard } from "@/components/BetasPage";
 import { PageShell } from "@/components/PageShell";
+import type { BetaPlatform } from "@/lib/content";
 import { renderWithIntl } from "@/tests/test-utils";
 
-const platform = {
+const platform: BetaPlatform = {
   id: "android",
   eyebrow: "Android",
   name: "Android beta",
