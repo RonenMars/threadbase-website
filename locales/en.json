@@ -700,7 +700,7 @@
       "imageCaption": "Actual app capture · English demo session",
       "strengthsHeading": "Built around your workflow",
       "detailsLabel": "Connection and session details",
-      "technicalDetails": "Noise protects phone-to-streamer traffic. Each device has its own revocable token. Push notifications never contain prompts or output. Taking over a terminal session requires a discoverable conversation ID. An optional relay can carry the encrypted connection.",
+      "technicalDetails": "Noise protects phone-to-streamer traffic. Each device has its own revocable token. Ordinary push notifications never contain prompts or output; optional iOS Live Activities show a session title and a short output excerpt. Taking over a terminal session requires a discoverable conversation ID. An optional relay can carry the encrypted connection.",
       "storyHeading": "Leave the desk. Keep the thread.",
       "steps": [
         {
