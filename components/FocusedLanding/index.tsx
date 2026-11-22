@@ -43,8 +43,8 @@ export function FocusedLanding(): React.JSX.Element {
         wide
         showFooter={false}
         header={
-          <header className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
-            <div>
+          <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+            <header>
               <div className="mb-8 flex items-center gap-3">
                 <Image
                   src="/screenshots/threadbase-icon.webp"
@@ -94,8 +94,46 @@ export function FocusedLanding(): React.JSX.Element {
                   </li>
                 ))}
               </ul>
-            </div>
-            <figure className="mx-auto w-full max-w-65 lg:max-w-70">
+            </header>
+            <section
+              aria-labelledby="story-heading"
+              className="border-t border-border pt-10"
+            >
+              <h2
+                id="story-heading"
+                className="text-balance text-2xl font-semibold tracking-tight text-primary sm:text-3xl"
+              >
+                {content.storyHeading}
+              </h2>
+              <ol className="mt-8 grid gap-7 sm:grid-cols-3 sm:gap-6">
+                {content.steps.map((step, index) => (
+                  <li key={step.title} className="border-s border-border ps-5">
+                    <span
+                      aria-hidden="true"
+                      className="font-mono text-xs text-accent"
+                    >
+                      0{index + 1}
+                    </span>
+                    <h3 className="mt-3 text-base font-semibold text-primary">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-secondary">
+                      {step.body}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+              <Button
+                className="mt-10 min-w-50"
+                size="lg"
+                variant="primary"
+                nativeButton={false}
+                render={<Link href="/lp/beta" />}
+              >
+                {content.ctaLabel}
+              </Button>
+            </section>
+            <figure className="mx-auto w-full max-w-65 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-70">
               <div className="overflow-hidden rounded-4xl border border-border-strong bg-bg-primary p-1.5 shadow-[0_24px_80px_-32px_rgba(99,179,255,0.3)]">
                 <Image
                   src="/screenshots/mobile-session-needs-input.webp"
@@ -111,7 +149,7 @@ export function FocusedLanding(): React.JSX.Element {
                 {content.imageCaption}
               </figcaption>
             </figure>
-          </header>
+          </div>
         }
       >
         <section aria-labelledby="strengths-heading" className="mt-16">
@@ -150,44 +188,6 @@ export function FocusedLanding(): React.JSX.Element {
               {content.technicalDetails}
             </p>
           </details>
-        </section>
-        <section
-          aria-labelledby="story-heading"
-          className="mt-12 border-t border-border pt-10"
-        >
-          <h2
-            id="story-heading"
-            className="text-balance text-2xl font-semibold tracking-tight text-primary sm:text-3xl"
-          >
-            {content.storyHeading}
-          </h2>
-          <ol className="mt-8 grid gap-7 sm:grid-cols-3 sm:gap-6">
-            {content.steps.map((step, index) => (
-              <li key={step.title} className="border-s border-border ps-5">
-                <span
-                  aria-hidden="true"
-                  className="font-mono text-xs text-accent"
-                >
-                  0{index + 1}
-                </span>
-                <h3 className="mt-3 text-base font-semibold text-primary">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-secondary">
-                  {step.body}
-                </p>
-              </li>
-            ))}
-          </ol>
-          <Button
-            className="mt-10 min-w-50"
-            size="lg"
-            variant="primary"
-            nativeButton={false}
-            render={<Link href="/lp/beta" />}
-          >
-            {content.ctaLabel}
-          </Button>
         </section>
       </PageShell>
     </motion.div>
