@@ -24,6 +24,10 @@
       "privacy": {
         "title": "Privacy Policy — Threadbase",
         "description": "How Threadbase handles streamer traffic, push notifications, anonymous diagnostics, feedback, and screenshots."
+      },
+      "lp": {
+        "title": "Threadbase — Your AI coding agents, in your pocket.",
+        "description": "Works with Claude Code, Codex, Cursor CLI and Copilot CLI."
       }
     }
   },
@@ -665,6 +669,27 @@
       "body": "An unexpected error interrupted this route. You can retry the render or return to the homepage.",
       "retry": "Try again",
       "homeLink": "Return home"
+    },
+    "lp": {
+      "eyebrow": "Threadbase · Mobile companion",
+      "headline": "Your AI coding agents, in your pocket.",
+      "subheadline": "Works with Claude Code, Codex, Cursor CLI and Copilot CLI.",
+      "ctaLabel": "Join the beta",
+      "betaHeading": "Pick your phone. Join the beta.",
+      "strengths": [
+        {
+          "title": "Works with the sessions you already run.",
+          "body": "The streamer discovers agents running in a normal terminal. Adopt sessions with a discoverable conversation ID, or resume a past conversation live. No wrapper required."
+        },
+        {
+          "title": "Unblock your agent from anywhere.",
+          "body": "Get push alerts when an agent needs input, finishes or fails. Send prompts, slash commands, interrupts and Esc/Tab/arrows. Review a diff and send a note back."
+        },
+        {
+          "title": "Your code stays on your machine.",
+          "body": "Phone-to-streamer traffic is end-to-end encrypted with Noise, direct to your own machine by default. Each device has a revocable token. Push payloads never carry prompts or output."
+        }
+      ]
     }
   }
 }

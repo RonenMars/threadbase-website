@@ -6,6 +6,7 @@ interface PageShellProps {
   description: React.ReactNode;
   children?: React.ReactNode;
   wide?: boolean;
+  showFooter?: boolean;
 }
 
 export function PageShell({
@@ -14,6 +15,7 @@ export function PageShell({
   description,
   children,
   wide,
+  showFooter = true,
 }: PageShellProps): React.JSX.Element {
   return (
     <div className="app-shell flex min-h-screen flex-col">
@@ -31,7 +33,7 @@ export function PageShell({
           {children}
         </article>
       </main>
-      <Footer />
+      {showFooter ? <Footer /> : null}
     </div>
   );
 }

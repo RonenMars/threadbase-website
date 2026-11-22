@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { AppleLogo, AndroidLogo } from "@phosphor-icons/react";
 import { Divide as Hamburger } from "hamburger-react";
+import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, type Locale, getTextDirection } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -93,7 +94,13 @@ function useMobilePlatform(): "ios" | "android" | "desktop" {
   return platform;
 }
 
-export function NavMenu(): React.JSX.Element {
+export function NavMenu(): React.JSX.Element | null {
+  const pathname = usePathname();
+  if (/\/lp\/?$/.test(pathname)) return null;
+  return <SiteNavMenu />;
+}
+
+function SiteNavMenu(): React.JSX.Element {
   const locale = useLocale() as Locale;
   const isRtl = getTextDirection(locale) === "rtl";
   const t = useTranslations("nav");

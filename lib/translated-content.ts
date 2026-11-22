@@ -213,3 +213,14 @@ export function getAndroidBetaContent(t: Translator): AndroidBetaContent {
     closing: t("closing"),
   };
 }
+
+export function getFocusedLandingContent(t: Translator) {
+  return {
+    eyebrow: t("eyebrow"),
+    headline: t("headline"),
+    subheadline: t("subheadline"),
+    ctaLabel: t("ctaLabel"),
+    betaHeading: t("betaHeading"),
+    strengths: rawArray<{ title: string; body: string }>(t, "strengths"),
+  };
+}
