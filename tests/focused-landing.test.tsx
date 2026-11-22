@@ -74,6 +74,28 @@ describe("focused campaign pages", () => {
     ).not.toBeInTheDocument();
   });
 
+  it.each(["/en/lp", "/he/lp", "/ru/lp/beta"])(
+    "shows only the language switcher on %s",
+    (pathname) => {
+      navigation.pathname = pathname;
+      renderWithIntl(<NavMenu />);
+      expect(
+        screen.getByRole("button", { name: /change language/i }),
+      ).toBeInTheDocument();
+      expect(
+        screen.queryByRole("button", { name: /open menu/i }),
+      ).not.toBeInTheDocument();
+    },
+  );
+
+  it.each(["/en/lpx", "/en/help"])("keeps the site menu on %s", (pathname) => {
+    navigation.pathname = pathname;
+    renderWithIntl(<NavMenu />);
+    expect(
+      screen.getByRole("button", { name: /open menu/i }),
+    ).toBeInTheDocument();
+  });
+
   it.each([generateMetadata, generateBetaMetadata])(
     "sets translated metadata and noindex",
     async (generate) => {

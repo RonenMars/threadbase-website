@@ -96,8 +96,16 @@ function useMobilePlatform(): "ios" | "android" | "desktop" {
 
 export function NavMenu(): React.JSX.Element | null {
   const pathname = usePathname();
-  if (/\/lp(?:\/|$)/.test(pathname)) return null;
+  if (/\/lp(?:\/|$)/.test(pathname)) return <CornerLanguageSwitcher />;
   return <SiteNavMenu />;
+}
+
+function CornerLanguageSwitcher(): React.JSX.Element {
+  return (
+    <div className="fixed inset-e-5 top-5 z-60">
+      <LanguageSwitcher variant="compact" />
+    </div>
+  );
 }
 
 function SiteNavMenu(): React.JSX.Element {
@@ -228,9 +236,7 @@ function SiteNavMenu(): React.JSX.Element {
           />
         </span>
       </button>
-      <div className="fixed inset-e-5 top-5 z-60">
-        <LanguageSwitcher variant="compact" />
-      </div>
+      <CornerLanguageSwitcher />
 
       <AnimatePresence initial={false}>
         {open ? (
