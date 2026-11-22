@@ -44,6 +44,10 @@ test.beforeEach(async ({ page }) => {
 // and structure are covered by the existing Vitest tests in tests/hero.test.tsx.
 const HERO_HEADLINE_MASK = ".glitch-title";
 
+// The Next.js dev overlay (the "N" badge, or an "Issues"/"Insight" pill when
+// the dev server has something to report) varies run to run; hide it.
+const HIDE_DEV_OVERLAY = "nextjs-portal { display: none !important; }";
+
 /**
  * Scroll the page from top to bottom and back to top, pausing between each
  * step so Framer Motion's `whileInView` / `useInView` IntersectionObserver
@@ -106,6 +110,7 @@ test("home page above the fold", async ({ page }) => {
     fullPage: false,
     clip: { x: 0, y: 0, width: 1440, height: 900 },
     mask: [page.locator(HERO_HEADLINE_MASK)],
+    style: HIDE_DEV_OVERLAY,
   });
 });
 
@@ -125,7 +130,10 @@ test("solutions stub page", async ({ page }) => {
   await page.evaluate(() => document.fonts.ready);
   // /solutions has no GlitchTitle; no mask needed. Also no scroll-triggered
   // sections (the page fits in a single viewport), so no settle call.
-  await expect(page).toHaveScreenshot("solutions.png", { fullPage: true });
+  await expect(page).toHaveScreenshot("solutions.png", {
+    fullPage: true,
+    style: HIDE_DEV_OVERLAY,
+  });
 });
 
 test("hero secondary CTA links to the quick-start anchor", async ({ page }) => {
